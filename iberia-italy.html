@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SOURCE | IBERIA &amp; ITALY</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  @font-face {
+    font-family: 'The Source';
+    src: local('The Source 4 Regular'), local('TheSource4-Regular'),
+         local('The Source'), local('TheSource');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', 'Garamond', serif;
+    font-size: 12pt;
+    line-height: 1.6;
+    background: #fff;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== PARALLAX HERO ===== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-image: url('https://thesourceimports.com/wp-content/uploads/2025/09/sette-1.jpg');
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    animation: gentleZoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes gentleZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.38);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 0 40px;
+  }
+
+  .hero-content h1 {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 72px;
+    font-weight: normal;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s ease forwards 0.3s;
+  }
+
+  .hero-content h2 {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 48px;
+    font-weight: normal;
+    letter-spacing: 18px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s ease forwards 0.6s;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(255,255,255,0.6);
+    margin: 0 auto 30px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards 0.9s;
+  }
+
+  .hero-content h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    opacity: 0;
+    color: rgba(255,255,255,0.85);
+    animation: fadeUp 1.2s ease forwards 1.1s;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 20px;
+    height: 32px;
+    border: 1.5px solid rgba(255,255,255,0.7);
+    border-radius: 12px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards 1.5s;
+  }
+  .scroll-hint::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 6px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 2px;
+    animation: scrollBounce 1.8s ease-in-out infinite;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    50% { transform: translateX(-50%) translateY(10px); opacity: 0.3; }
+  }
+
+  /* ===== MAIN CONTAINER ===== */
+  .main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px 60px;
+  }
+
+  .main-title {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 35pt;
+    font-weight: normal;
+    text-align: left;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .intro-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 13pt;
+    font-style: italic;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 70px;
+    max-width: 720px;
+  }
+
+  /* ===== PRODUCER SECTIONS ===== */
+  .producer-section {
+    margin-bottom: 65px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .producer-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .producer-title {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 22pt;
+    font-weight: normal;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+  }
+
+  /* --- Carousel --- */
+  .carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    margin-bottom: 28px;
+    background: #f0f0f0;
+  }
+
+  .carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    height: 100%;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.75);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 2;
+    color: #333;
+    opacity: 0;
+    transition: opacity 0.3s, background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+
+  .carousel:hover .carousel-btn { opacity: 1; }
+  .carousel-btn:hover { background: rgba(255,255,255,0.95); }
+  .carousel-btn.prev { left: 12px; }
+  .carousel-btn.next { right: 12px; }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+  }
+
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .carousel-dot.active {
+    background: rgba(255,255,255,0.95);
+  }
+
+  /* --- Producer text --- */
+  .producer-bio {
+    font-family: 'EB Garamond', 'Garamond', serif;
+    font-size: 12pt;
+    font-style: italic;
+    line-height: 1.55;
+    margin-bottom: 24px;
+    color: #444;
+  }
+
+  .producer-link {
+    font-family: 'EB Garamond', 'Garamond', serif;
+    font-size: 12pt;
+    font-style: italic;
+    display: inline-block;
+    margin-bottom: 28px;
+    color: #5a3e2b;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(90, 62, 43, 0.3);
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .producer-link:hover {
+    color: #3a2518;
+    border-bottom-color: #3a2518;
+  }
+
+  /* --- Wine entries --- */
+  .wine-entry {
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .wine-entry:last-child { border-bottom: none; }
+
+  .wine-title {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 15pt;
+    font-weight: normal;
+    line-height: 1.45;
+    margin-bottom: 4px;
+  }
+
+  .wine-desc {
+    font-family: 'EB Garamond', 'Garamond', serif;
+    font-size: 12pt;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    color: #555;
+  }
+
+  .wine-pricing-line {
+    font-family: 'EB Garamond', serif;
+    font-size: 11pt;
+    color: #5a3e2b;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== MAP THUMBNAILS & LIGHTBOX ===== */
+  .map-thumb {
+    display: inline-block;
+    cursor: pointer;
+    max-width: 260px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .map-thumb:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .map-thumb img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid #e0e0e0;
+  }
+  .map-label {
+    display: block;
+    font-family: 'EB Garamond', serif;
+    font-size: 10pt;
+    font-style: italic;
+    color: #888;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 40px;
+    backdrop-filter: blur(4px);
+  }
+  .lightbox-overlay.active {
+    display: flex;
+  }
+  .lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 12px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 32px;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    font-family: 'EB Garamond', serif;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    line-height: 1;
+  }
+  .lightbox-close:hover { color: #fff; }
+  .lightbox-caption {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'EB Garamond', serif;
+    font-size: 11pt;
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    white-space: nowrap;
+  }
+
+  /* ===== SUMMARY TABLE ===== */
+  .summary-section {
+    margin-top: 40px;
+    padding-top: 50px;
+    border-top: 1px solid #ddd;
+  }
+
+  .summary-title {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 22pt;
+    font-weight: normal;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'EB Garamond', serif;
+  }
+
+  .summary-table thead th {
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    text-align: left;
+    padding: 0 0 12px;
+    border-bottom: 1px solid #ddd;
+    font-weight: normal;
+  }
+
+  .summary-table thead th:nth-child(3) { text-align: right; }
+
+  .summary-table tbody td {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    vertical-align: top;
+    font-size: 11pt;
+  }
+
+  .summary-table tbody td:first-child {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 11.5pt;
+    padding-right: 20px;
+  }
+
+  .summary-table tbody td:nth-child(2) {
+    color: #888;
+    font-style: italic;
+  }
+
+  .summary-table tbody td:nth-child(3) {
+    text-align: right;
+    color: #5a3e2b;
+    white-space: nowrap;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 60px 40px;
+    margin-top: 40px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .footer-logo {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 18pt;
+    font-weight: normal;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .footer p {
+    font-family: 'EB Garamond', serif;
+    font-size: 11pt;
+    color: #999;
+    line-height: 1.8;
+  }
+
+  .footer a {
+    color: #5a3e2b;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(90, 62, 43, 0.3);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 48px;
+      letter-spacing: 8px;
+    }
+    .hero-content h2 {
+      font-size: 30px;
+      letter-spacing: 12px;
+    }
+    .hero-content h3 {
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+    .main-container {
+      padding: 50px 24px 40px;
+    }
+    .main-title {
+      font-size: 24pt;
+    }
+    .summary-table thead th:nth-child(2),
+    .summary-table tbody td:nth-child(2) {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== PARALLAX HERO COVER ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>THE SOURCE</h1>
+    <h2>IBERIA &amp; ITALY</h2>
+    <div class="hero-divider"></div>
+    <h3>SELECTIONS FOR CONTRABAND BAYOU WINE CO.</h3>
+  </div>
+  <div class="scroll-hint"></div>
+</section>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-container">
+
+  <!-- ==================== 1. SETTE ==================== -->
+  <div class="producer-section" id="sette">
+    <h2 class="producer-title">Sette</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/sette-1.jpg" alt="Sette estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/sette-2.jpg" alt="Sette vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/sette.jpg" alt="Sette winery"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2022/09/sette-rosato.jpg" alt="Sette rosato"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/06/sette-vino-scaled.jpg" alt="Sette vino"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      Gino Della Porta and his close friend and superstar-enologist Gian Luca Colombo founded Sette in 2017 with the purchase of a 5.8ha hill in Bricco di Nizza, in Nizza Monferrato. They join the new generation of driven young winegrowers who experiment with new and ancient techniques to express their vision of wine free from cultural and regional expectations while employing the most ecological methods possible. Certified organic since 2018 and in conversion to biodynamics in 2020, their terroir is composed of sandy limestone, chalk, and a wide variety of other siliceous geological formations on steep hills with great variations of soil grain. Their broad range includes dry, skin-contacted Moscato and amphora-aged Grignolino, and their main focus is their Barbera d&rsquo;Asti DOC (though technically in Nizza DOCG) and Barbera Nizza DOCG from 80-year-old vines. There are no rules or cellar recipes beyond appellation requirements and every season determines their strategy.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/sette/" target="_blank" class="producer-link">Click here for more on Sette &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Sette, Nizza Barbera 2022</p>
+      <p class="wine-desc">Barbera Nizza Monferrato is harvested from vines planted in 1940 &amp; 1990 on south and east slopes between 240&ndash;300m on marly bedrock with deep silt and calcareous topsoil. Barbera Nizza Monferrato is destemmed and naturally fermented up to 18&deg;C for 40&ndash;45 days with a submerged cap days with no extractions, followed by 10 months in concrete with the first sulfites added after malolactic fermentation. It&rsquo;s neither filtered nor fined.</p>
+    </div>
+  </div>
+
+  <!-- ==================== 2. MARENGO ==================== -->
+  <div class="producer-section" id="marengo">
+    <h2 class="producer-title">Marengo</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/12/Marengo-hp.jpg" alt="Marengo estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Marengo-2-1.jpg" alt="Marengo vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Marengo-1-1.jpg" alt="Marengo cellar"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Marengo-5-scaled.jpg" alt="Marengo terroir"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Marengo-6-scaled.jpg" alt="Marengo landscape"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      Once the Marengo family&rsquo;s technical direction was given to Daniele at age twenty-two, his personal taste and style of wines led him to pursue freshness over power and ripeness, and to highlight their Novello-based high-altitude vineyards. They turned their attention to soil health and the incorporation organic farming. The cellar work was gentler, and new techniques were employed. They harvest earlier, consider whole cluster and submerged cap fermentations when traditional methods need a boost. They gently extract and press, manipulate less and age in concrete and medium-sized botte. They also bottle early to keep the wines fresh, clean, and not overworked or exhausted before bottling. Led by their three MGA sites, Ravera, Terlo, and La Volta, Nebbiolo is the focus, but Daniele&rsquo;s Barbera, Dolcetto and Nas-c&euml;tta also inspire.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/mauro-marengo/" target="_blank" class="producer-link">Click here for more on Marengo &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Marengo, Langhe Nebbiolo 2023</p>
+      <p class="wine-desc">Marengo&rsquo;s Langhe Nebbiolo comes from numerous young vine parcels (5&ndash;25 years old) in the localit&agrave; Novello, Serra, and Zora, including the MGA Ravera&rsquo;s 20-year-old vines (2023) and the MGA La Volta&rsquo;s at 68, and Zora, 53, exposed in all directions on gentle (La Volta and Zora) to steep (Ravera) slopes of calcareous marl, sand and silt between 380&ndash;430m. The Langhe Nebbiolo is naturally fermented in steel and concrete, and the macerations last about 25&ndash;27 days with daily pumpovers: three in the first days and one later into the maceration. Temperatures in steel are controlled while those in concrete are not. After pressing, it&rsquo;s racked once or twice before going into 10, 25 and 30hl botte for 4&ndash;5 months, selected for quality, then racked into steel for another two months before bottling. Sulfites are first added after malolactic, and it&rsquo;s not fined nor filtered.</p>
+    </div>
+  </div>
+
+  <!-- ==================== 3. FLETCHER ==================== -->
+  <div class="producer-section" id="fletcher">
+    <h2 class="producer-title">Fletcher</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/02/fletcher-wines.jpg" alt="Fletcher wines"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/Fletcher-favorita-scaled.jpeg" alt="Fletcher favorita"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/Fletcher-2-scaled.jpeg" alt="Fletcher vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/Fletcher-1-scaled.jpeg" alt="Fletcher estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/Fletcher-4-scaled.jpeg" alt="Fletcher terroir"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <a href="https://thesourceimports.com/producers/david-fletcher/" target="_blank" class="producer-link">Click here for more on Fletcher &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Fletcher, Dolcetto d&rsquo;Alba 2024</p>
+      <p class="wine-desc">Harvested from 60-year-old massale selections in the limestone and sand of the Alta Langa&rsquo;s (Alba commune) Bricco Capre vineyard on a medium-steep slope with an eastern exposure at 350m. Destemmed and naturally fermented at ~30&deg;C max with short, daily punchdowns every second day (pumpovers if needed to manage reduction) and the first sulfites added after malolactic. Aged 9 months in old French oak barrels. Unfined and unfiltered.</p>
+    </div>
+  </div>
+
+  <!-- ==================== 4. CASTELLO DI CASTELLENGO ==================== -->
+  <div class="producer-section" id="castellengo">
+    <h2 class="producer-title">Castello di Castellengo</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/castellengo-hp.jpg" alt="Castello di Castellengo"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/Castellengo1.jpg" alt="Castellengo vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/Castellengo-sm2.jpg" alt="Castellengo cellar"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/07/Castellengo2.jpg" alt="Castellengo terroir"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/07/Castellengo1.jpg" alt="Castellengo landscape"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <a href="https://thesourceimports.com/producers/castello-di-castellengo/" target="_blank" class="producer-link">Click here for more on Castello di Castellengo &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Castellengo, Rosso della Motta, Vino Rosso 2023</p>
+      <p class="wine-desc">Coste della Sesia &lsquo;Rosso della Motta&rsquo; is composed of 100% Nebbiolo grapes from 7 hectares of different plots planted 70&ndash;80 year ago (2024) between 300&ndash;350 meters facing south/southwest on a hill of marine sand and clay. Coste della Sesia &lsquo;Rosso Motta&rsquo; is a natural fermentation in steel for two weeks at 20&ndash;22&deg;C max with daily pumpovers until pressing. It&rsquo;s then aged on lees for 24&ndash;30 months in concrete without racking and lightly filtered before bottling. 40 mg/L total sulfur added only at bottling.</p>
+    </div>
+  </div>
+
+  <!-- ==================== 5. BARALDO ==================== -->
+  <div class="producer-section" id="baraldo">
+    <h2 class="producer-title">Baraldo</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2024/10/Baraldo.jpg" alt="Baraldo estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2024/09/giacomobaraldo5.jpg" alt="Giacomo Baraldo"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2022/12/Baraldo%20-%20-Caccialupi-.jpeg" alt="Baraldo Caccialupi"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2022/12/Baraldo%20-%20-il%20Bossolo--scaled.jpeg" alt="Baraldo il Bossolo"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2022/12/Baraldo%20-%20-Il%20Pozzone--scaled.jpeg" alt="Baraldo Il Pozzone"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      The artistic, free-thinking, and technically astute enologist and vignaiolo, Giacomo Baraldo, acts on intuition guided by his near decade of experiences in Bordeaux and Burgundy, Patagonia and New Zealand. Though his wines are exploratory and diverse, his single-site Sangioveses are his inspiration to unlock the potential of Monte Cetona, a geologically complex solitary limestone mountain halfway between Rome and Florence.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/giacomo-baraldo/" target="_blank" class="producer-link">Click here for more on Baraldo &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Baraldo, Toscana Rosso, il Bossolotto 2023</p>
+      <p class="wine-desc">&lsquo;Il Bossolotto&rsquo; comes from 3 Sangiovese crus (Bossolo, Caccialupi, Pozzone) and Merlot with a vine age between 15&ndash;70-years-old on soft to medium slopes of limestone bedrock and rocky topsoil of clay, sand, and silt. 5% whole cluster natural fermentation for 25&ndash;30 days with 2&ndash;3 daily punch downs. Aged 12 months in old French oak barrels (min 5 yr old), full ML, and 6 months in steel. No fining or filtration.</p>
+    </div>
+  </div>
+
+  <!-- ==================== 6. SORGENTE ==================== -->
+  <div class="producer-section" id="sorgente">
+    <h2 class="producer-title">Sorgente</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2023/10/Tuo-Sorgente.jpeg" alt="Tuo Sorgente"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2019/08/sorgente.jpg" alt="Sorgente vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2019/08/sorgente-extra-dry.jpg" alt="Sorgente Extra Dry"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2019/08/sorgente-brut.jpg" alt="Sorgente Brut"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2022/05/Tuo-sm.jpg" alt="Tuo"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      This Friuli-Venezia Giulia based Prosecco wine is a unique collaboration with The Source. Void of all herbicides and pesticides, and grown on limestone and clay mixed with river alluvium, all the grapes are harvested by hand (a rarity with Prosecco DOC wine) and a triage of the free run juice and only the first half of the press juice is reserved for the final bottling. Primary fermentation takes place naturally while the second fermentation is made with cultured yeast to ensure the right final balance. Aged in steel, both wines are racy and straight, with a dosage of 12g/L for the Extra Dry Prosecco and 5g/L for the Brut. Sorgente&rsquo;s Pinot Grigio sidekick, Tuo is grown in the same vineyards and also hand-harvested with two different pickings to bring greater complexity and range to its profile.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/sorgente/" target="_blank" class="producer-link">Click here for more on Sorgente &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Sorgente, Prosecco, Extra Dry</p>
+      <p class="wine-desc">100% Glera grown 20k south of the Alps and 30km northeast of the Adriatic Sea in Friuli-Venezia Giulia on the western Veneto border, next to a natural spring (sorgente). The vines are planted in 2007&ndash;2015 next to a natural spring on alluvial limestone bedrock and topsoil. Two-week natural fermentation in steel at 17&deg;C max and a second fermentation started with neutral cultured yeast. 12g/L dosage.</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">Sorgente, Prosecco, Brut</p>
+      <p class="wine-desc">100% Glera grown 20k south of the Alps and 30km northeast of the Adriatic Sea in Friuli-Venezia Giulia on the western Veneto border, next to a natural spring (sorgente). The vines are planted in 2007&ndash;2015 next to a natural spring on alluvial limestone bedrock and topsoil. Two-week natural fermentation in steel at 17&deg;C max and a second fermentation started with neutral cultured yeast. 5g/L dosage.</p>
+    </div>
+  </div>
+
+  <!-- ==================== 7. MADONNA DELLE GRAZIE ==================== -->
+  <div class="producer-section" id="madonna-delle-grazie">
+    <h2 class="producer-title">Madonna delle Grazie</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2017/06/messer-otto.jpg" alt="Madonna delle Grazie Messer Otto"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2017/06/Liscone.jpg" alt="Liscone vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2017/06/leucone.jpg" alt="Leucone"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2017/06/growing-season-liscone-vineyard.jpg" alt="Liscone growing season"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2017/06/Giuseppe-Latorraca-history.jpg" alt="Giuseppe Latorraca"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      The two idealistic enologists and brothers Paolo and Michele Latoracca infused with their father Guiseppe&rsquo;s deep vineyard experience results in a perfect combination for authentic, organically farmed, volcanic Aglianico wines. Located in Venosa, one of fifteen communes of the DOC and DOCG areas of Aglianico del Vulture, their terroirs are between 400&ndash;550 meters altitude. Between their three parcels, there are five notable terroirs independently bottled.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/cantina-madonna-delle-grazie/" target="_blank" class="producer-link">Click here for more on Madonna delle Grazie &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Madonna delle Grazie, Aglianico del Vulture Rosso, Liscone 2020</p>
+      <p class="wine-desc">The Aglianico del Vulture &lsquo;Liscone&rsquo; comes from 35-year-old vines (2023) at 430m planted with massale selections. The 50cm of topsoil is black volcanic clay mixed with coarse, blondish-gray volcanic tuff from the underlying bedrock. Destemmed, natural fermentation for 14&ndash;24 days with daily pump overs at 28&ndash;32&deg;C max. Aged 18 months in steel, then one year in old 500l French oak. Sulfites added after malolactic; light filtration, no fining.</p>
+    </div>
+  </div>
+
+  <!-- ==================== 8. AUGALEVADA ==================== -->
+  <div class="producer-section" id="augalevada">
+    <h2 class="producer-title">Augalevada</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/05/augalevada-ollos-de-maia-sm.jpg" alt="Augalevada Ollos de Maia"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2024/12/augalevada-ollos-tinto-sm.jpg" alt="Augalevada Ollos Tinto"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/04/augalevada-2.jpg" alt="Augalevada vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/04/Augalevada5.jpg" alt="Augalevada terroir"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      Iago Garrido may be destined to become one of Spain&rsquo;s most influential winegrowers. In 2014 this former professional soccer player buried an amphora filled with Treixadura in the middle of his granite vineyard inside Ribeiro&rsquo;s Avia River Valley. Initially convinced he had made a mistake with the discovery of a flor yeast veil, he later realized this errant shot actually hit a vein of gold that went on to define the direction of his wines. What makes Iago&rsquo;s wines special is not only that he welcomes the influence of flor, or that he is committed to biodynamic practices in his cellar and the vineyards he owns and the ones he works directly himself, and to only using a minuscule dose of sulfur in his wines, it&rsquo;s his razor-sharp attention to detail coupled with his openness to take in the ideas and opinions of others. His creative range is focused on indigenous Galician varieties with many different bottlings.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/fazenda-augalevada/" target="_blank" class="producer-link">Click here for more on Augalevada &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Augalevada, Ribeiro Tinto, Ollos 2023</p>
+      <p class="wine-desc">Ollos Tinto is a blend of young and old vines of Ca&iacute;&ntilde;o Longo, Brancellao, Espadeiro and Sous&oacute;n from organic and sustainably farmed vineyards in the three unofficial Ribeiro subzones Arnoia, Avia, and Mi&ntilde;o, at 100&ndash;300m on mostly granite and gneiss bedrock with sand and clay topsoil derived from the bedrock. 30% destemmed by hand and 70% whole cluster lightly crushed with a fermentation/maceration 30&ndash;40 days before pressing. 80% aged in old 500&ndash;600l barrels and 20% in 400l amphora vat for 10 months. No fining or filtration.</p>
+    </div>
+  </div>
+
+  <!-- ==================== 9. ASEGINOLAZA Y LEUNDA ==================== -->
+  <div class="producer-section" id="aseginolaza">
+    <h2 class="producer-title">Aseginolaza y Leunda</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/10/Aseginolaza14.jpg" alt="Aseginolaza y Leunda estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/10/Aseginolaza15.jpg" alt="Aseginolaza vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/10/Aseginolaza16.jpg" alt="Aseginolaza terroir"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/10/Aseginolaza17.jpg" alt="Aseginolaza landscape"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Aseginolaza13.jpg" alt="Aseginolaza cellar"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      High school friends and professional environmentalists, Jon Aseginolaza and Pedro Leunda began their collaborative winemaking career in 2017 with six high-altitude hectares scattered across 13 different parcels from one end of Spain&rsquo;s expansive Navarra to the other. Most of their vineyards are organically farmed with a focus on ancient-bush vines in the northern subregions Tierra Estella (Dicastillo), Baja Monta&ntilde;a (San Martin de Unx), and Ribera Alta (Olite), and the seasonal winds and site-specific plots contribute unique influences to their wide range of terroir on limestone bedrock with limestone rock-rich loamy topsoil, sand and silt with pockets of clay and gypsum. They produce one white from the Viura grape and numerous reds from different sites dominated by Garnacha with the supporting cast of Tempranillo and Cari&ntilde;ana. Red grape fermentations have varying degrees of whole bunches and spontaneously ferment in steel with bare-handed extractions. They&rsquo;re then pressed by hand, finish malolactic in steel, and are racked into either old French oak or steel for different lengths of time. The wines are neither filtered nor fined.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/aseginolaza-y-leunda/" target="_blank" class="producer-link">Click here for more on Aseginolaza y Leunda &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Aseginolaza y Leunda, Navarra Tinto, Birak 2024</p>
+      <p class="wine-desc">Birak is harvested from non-irrigated, old bush-vine Garnacha planted mainly in Olite in the upper terraces of the Zidacos river basin on poor and rocky calcareous soils at 400m. Destemmed and naturally fermented for 15 days in steel at 24&deg;C max. with short, daily pumpovers. Pressed and aged on lees 4 months in steel followed by 2 months in old 225L French oak. Unfiltered and unfined.</p>
+    </div>
+  </div>
+
+  <!-- ==================== 10. CUME DO AVIA ==================== -->
+  <div class="producer-section" id="cume-do-avia">
+    <h2 class="producer-title">Cume do Avia</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Cume-do-avia-1.jpg" alt="Cume do Avia estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Cume-do-avia-2.jpg" alt="Cume do Avia vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/1A2A1993-scaled.jpeg" alt="Cume do Avia terroir"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/01/cume-do-avia-sm.jpg" alt="Cume do Avia cellar"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2024/08/Cume-do-avia-Colleita-10.jpg" alt="Cume do Avia Colleita"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      East of Spain&rsquo;s R&iacute;as Baixas lies the Ribeiro D.O., one of the country&rsquo;s most historic wine regions internationally known for both red and white wines for nearly a thousand years. Here, a band of idealistic young brothers and cousins left city life to reclaim their family&rsquo;s abandoned land, Eida de Mouro, and recapture their family&rsquo;s ancient history. Their label, Cume do Avia, began nearly two decades ago, and their geologically complex mountainside vineyards are composed of granodiorite, schist, slate, and gneiss bedrock, clay and sand topsoil, and have nearly twenty indigenous grape varieties planted with ancient massale selections and overlook the Avia and Mi&ntilde;o Rivers. They bottle single variety and blended wines of intense freshness, detail, and authenticity, with the reds led by the graceful queen of Galician red grapes, Brancellao, along with the unstoppably vigorous Ca&iacute;&ntilde;o Longo, and the ink-black and deliciously savage Sous&oacute;n. Their whites are led by soft Treixadura, with a supporting cast of high-acid varieties, like Albari&ntilde;o, Lado, and Loureiro.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/cume-do-avia/" target="_blank" class="producer-link">Click here for more on Cume do Avia &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Cume do Avia, Ribeiro Branco, Dos Canotos 2022</p>
+      <p class="wine-desc">Dos Canotos Blanco comes from Albari&ntilde;o (30%), Lado (28%), Ca&iacute;&ntilde;o Branco (22%), and Loureira Blanco (20%), planted between 2008 and 2009 at elevations of 250&ndash;300m on south-facing exposures. The vineyards range from flat to very steep terraces on a mix of metamorphic (schist, slate, gneiss) and igneous (granite, granodiorite) bedrock, with a topsoil mix of very rocky sand, silt, and clay. Dos Canotos Blanco goes through a natural fermentation with maximum temperatures between 18&ndash;23&deg;C in steel and is aged 5 months in large, ancient (restored) chestnut foudres. Before bottling, it is lightly filtered.</p>
+    </div>
+  </div>
+
+  <!-- ==================== 11. FAZENDA PRADIO ==================== -->
+  <div class="producer-section" id="fazenda-pradio">
+    <h2 class="producer-title">Fazenda Pradio</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/02/Pradio11.jpg" alt="Fazenda Pradio estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/10/Pradio7.jpg" alt="Pradio vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/10/Pradio8.jpg" alt="Pradio terroir"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/01/pradio-sm.jpg" alt="Pradio cellar"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2023/10/pradio-vineyards-hp.jpg" alt="Pradio vineyards"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      Xabi Soeanes is in love with his Galician countryside, and he&rsquo;s even more taken in by its nearly forgotten past. His greatest desire, his dream, is to share this cultural treasure with the world, through the lens of his varietally blended wines&mdash;the historical winegrowing practice of this area. Fazenda Pr&aacute;dio (named after a local tree known as a false maple, or sycamore) is located within the Chantada subzone, one of the coldest of Ribeira Sacra, heavily influenced by the Atlantic. His 3.5ha of vines, a collection of Menc&iacute;a, Ca&iacute;&ntilde;o Longo, Merenzao, Brancellao, Godello, and other indigenous varieties, are perched on wide terraces between 180&ndash;300m that overlook the Mi&ntilde;o River gorge and are carved out of a steep hill split with granite and schist. Xabi practiced organic and biodynamic farming for years but after a series of seasons that almost put him out of business, he keeps the door open to move freely when needed.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/fazenda-pradio/" target="_blank" class="producer-link">Click here for more on Fazenda Pradio &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">Seoane Novelle, Ribeira Sacra Tinto, Mencia 2022</p>
+      <p class="wine-desc">Surrounded by indigenous forests on all sides but the river side and influenced by both oceanic and continental weather, Pradio&rsquo;s vines were planted in the early 2000s on south/southeast-facing terraced slope of granite and schist at 190&ndash;240m overlooking the Mi&ntilde;o River. Hand harvested, fully destemmed, and naturally fermented for 7&ndash;10 days in granite lagars (stone vats). The wine is gravity fed into older French oak barrels (mostly 500L with a few smaller sizes 300L and 225L) prior to pressing the pomace. The wines are usually racked and sulfured after malolactic and again at bottling with a total of between 30&ndash;50 ppm of sulfites.</p>
+    </div>
+  </div>
+
+  <!-- ==================== PRICING SUMMARY ==================== -->
+  <div class="summary-section">
+    <h2 class="summary-title">At a Glance</h2>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Wine</th>
+          <th>Producer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nizza Barbera 2022</td>
+          <td>Sette</td>
+        </tr>
+        <tr>
+          <td>Langhe Nebbiolo 2023</td>
+          <td>Marengo</td>
+        </tr>
+        <tr>
+          <td>Dolcetto d&rsquo;Alba 2024</td>
+          <td>Fletcher</td>
+        </tr>
+        <tr>
+          <td>Rosso della Motta, Vino Rosso 2023</td>
+          <td>Castellengo</td>
+        </tr>
+        <tr>
+          <td>Toscana Rosso, il Bossolotto 2023</td>
+          <td>Baraldo</td>
+        </tr>
+        <tr>
+          <td>Prosecco, Extra Dry</td>
+          <td>Sorgente</td>
+        </tr>
+        <tr>
+          <td>Prosecco, Brut</td>
+          <td>Sorgente</td>
+        </tr>
+        <tr>
+          <td>Aglianico del Vulture Rosso, Liscone 2020</td>
+          <td>Madonna delle Grazie</td>
+        </tr>
+        <tr>
+          <td>Ribeiro Tinto, Ollos 2023</td>
+          <td>Augalevada</td>
+        </tr>
+        <tr>
+          <td>Navarra Tinto, Birak 2024</td>
+          <td>Aseginolaza y Leunda</td>
+        </tr>
+        <tr>
+          <td>Ribeiro Branco, Dos Canotos 2022</td>
+          <td>Cume do Avia</td>
+        </tr>
+        <tr>
+          <td>Ribeira Sacra Tinto, Mencia 2022</td>
+          <td>Seoane Novelle</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p class="footer-logo">The Source</p>
+  <p>
+    <a href="https://thesourceimports.com">thesourceimports.com</a>
+  </p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Lightbox for maps
+function openLightbox(src, alt) {
+  var overlay = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxImg').alt = alt;
+  document.getElementById('lightboxCaption').textContent = alt;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Parallax effect on hero background
+(function() {
+  const heroBg = document.querySelector('.hero-bg');
+  const hero = document.querySelector('.hero');
+  const heroContent = document.querySelector('.hero-content');
+
+  window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+
+    if (scrollY <= heroHeight) {
+      heroBg.style.transform = 'translateY(' + (scrollY * 0.4) + 'px)';
+      const opacity = 1 - (scrollY / (heroHeight * 0.6));
+      heroContent.style.opacity = Math.max(0, opacity);
+      heroContent.style.transform = 'translateY(' + (scrollY * 0.2) + 'px)';
+    }
+  }, { passive: true });
+})();
+
+// Scroll-triggered fade-in for producer sections
+(function() {
+  const sections = document.querySelectorAll('.producer-section');
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function(section) {
+    observer.observe(section);
+  });
+})();
+
+// Image carousels
+(function() {
+  document.querySelectorAll('[data-carousel]').forEach(function(carousel) {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+    const prevBtn = carousel.querySelector('.carousel-btn.prev');
+    const nextBtn = carousel.querySelector('.carousel-btn.next');
+    let current = 0;
+
+    slides.forEach(function(_, i) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', function() { goTo(i); });
+      dotsContainer.appendChild(dot);
+    });
+
+    function goTo(index) {
+      current = index;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dotsContainer.querySelectorAll('.carousel-dot').forEach(function(dot, i) {
+        dot.classList.toggle('active', i === current);
+      });
+    }
+
+    prevBtn.addEventListener('click', function() {
+      goTo(current === 0 ? slides.length - 1 : current - 1);
+    });
+    nextBtn.addEventListener('click', function() {
+      goTo(current === slides.length - 1 ? 0 : current + 1);
+    });
+
+    let startX = 0;
+    let isDragging = false;
+
+    carousel.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', function(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextBtn.click();
+        else prevBtn.click();
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
