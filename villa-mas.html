@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SOURCE | TASTING FOR VILLA MAS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  @font-face {
+    font-family: 'The Source';
+    src: local('The Source 4 Regular'), local('TheSource4-Regular'),
+         local('The Source'), local('TheSource');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', 'Garamond', serif;
+    font-size: 12pt;
+    line-height: 1.6;
+    background: #fff;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== PARALLAX HERO ===== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-image: url('https://thesourceimports.com/wp-content/uploads/2025/05/P-Baudouin-Clos-des-Bruandieres-scaled.jpeg');
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    animation: gentleZoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes gentleZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.38);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 0 40px;
+  }
+
+  .hero-content h1 {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 72px;
+    font-weight: normal;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s ease forwards 0.3s;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(255,255,255,0.6);
+    margin: 0 auto 30px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards 0.6s;
+  }
+
+  .hero-content h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    opacity: 0;
+    color: rgba(255,255,255,0.85);
+    animation: fadeUp 1.2s ease forwards 0.9s;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 20px;
+    height: 32px;
+    border: 1.5px solid rgba(255,255,255,0.7);
+    border-radius: 12px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards 1.5s;
+  }
+  .scroll-hint::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 6px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 2px;
+    animation: scrollBounce 1.8s ease-in-out infinite;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    50% { transform: translateX(-50%) translateY(10px); opacity: 0.3; }
+  }
+
+  /* ===== MAIN CONTAINER ===== */
+  .main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px 60px;
+  }
+
+  /* ===== PRODUCER SECTIONS ===== */
+  .producer-section {
+    margin-bottom: 65px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .producer-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .producer-title {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 22pt;
+    font-weight: normal;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+  }
+
+  /* --- Carousel --- */
+  .carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    margin-bottom: 28px;
+    background: #f0f0f0;
+  }
+
+  .carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    height: 100%;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.75);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 2;
+    color: #333;
+    opacity: 0;
+    transition: opacity 0.3s, background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+
+  .carousel:hover .carousel-btn { opacity: 1; }
+  .carousel-btn:hover { background: rgba(255,255,255,0.95); }
+  .carousel-btn.prev { left: 12px; }
+  .carousel-btn.next { right: 12px; }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+  }
+
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .carousel-dot.active {
+    background: rgba(255,255,255,0.95);
+  }
+
+  /* --- Producer text --- */
+  .producer-bio {
+    font-family: 'EB Garamond', 'Garamond', serif;
+    font-size: 12pt;
+    font-style: italic;
+    line-height: 1.55;
+    margin-bottom: 24px;
+    color: #444;
+  }
+
+  .producer-link {
+    font-family: 'EB Garamond', 'Garamond', serif;
+    font-size: 12pt;
+    font-style: italic;
+    display: inline-block;
+    margin-bottom: 28px;
+    color: #5a3e2b;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(90, 62, 43, 0.3);
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .producer-link:hover {
+    color: #3a2518;
+    border-bottom-color: #3a2518;
+  }
+
+  /* --- Wine entries --- */
+  .wine-entry {
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .wine-entry:last-child { border-bottom: none; }
+
+  .wine-title {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 15pt;
+    font-weight: normal;
+    line-height: 1.45;
+    margin-bottom: 4px;
+  }
+
+  .wine-desc {
+    font-family: 'EB Garamond', 'Garamond', serif;
+    font-size: 12pt;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    color: #555;
+  }
+
+  .wine-pricing-line {
+    font-family: 'EB Garamond', serif;
+    font-size: 11pt;
+    color: #5a3e2b;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== MAP THUMBNAILS & LIGHTBOX ===== */
+  .map-thumb {
+    display: inline-block;
+    cursor: pointer;
+    max-width: 260px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .map-thumb:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .map-thumb img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid #e0e0e0;
+  }
+  .map-label {
+    display: block;
+    font-family: 'EB Garamond', serif;
+    font-size: 10pt;
+    font-style: italic;
+    color: #888;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 40px;
+    backdrop-filter: blur(4px);
+  }
+  .lightbox-overlay.active {
+    display: flex;
+  }
+  .lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 12px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 32px;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    font-family: 'EB Garamond', serif;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    line-height: 1;
+  }
+  .lightbox-close:hover { color: #fff; }
+  .lightbox-caption {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'EB Garamond', serif;
+    font-size: 11pt;
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    white-space: nowrap;
+  }
+
+  /* ===== SUMMARY TABLE ===== */
+  .summary-section {
+    margin-top: 40px;
+    padding-top: 50px;
+    border-top: 1px solid #ddd;
+  }
+
+  .summary-title {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 22pt;
+    font-weight: normal;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'EB Garamond', serif;
+  }
+
+  .summary-table thead th {
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    text-align: left;
+    padding: 0 0 12px;
+    border-bottom: 1px solid #ddd;
+    font-weight: normal;
+  }
+
+  .summary-table tbody td {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    vertical-align: top;
+    font-size: 11pt;
+  }
+
+  .summary-table tbody td:first-child {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 11.5pt;
+    padding-right: 20px;
+  }
+
+  .summary-table tbody td:nth-child(2) {
+    color: #888;
+    font-style: italic;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 60px 40px;
+    margin-top: 40px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .footer-logo {
+    font-family: 'The Source', 'EB Garamond', serif;
+    font-size: 18pt;
+    font-weight: normal;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .footer p {
+    font-family: 'EB Garamond', serif;
+    font-size: 11pt;
+    color: #999;
+    line-height: 1.8;
+  }
+
+  .footer a {
+    color: #5a3e2b;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(90, 62, 43, 0.3);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 48px;
+      letter-spacing: 8px;
+    }
+    .hero-content h3 {
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+    .main-container {
+      padding: 50px 24px 40px;
+    }
+    .summary-table thead th:nth-child(2),
+    .summary-table tbody td:nth-child(2) {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== PARALLAX HERO COVER ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>THE SOURCE</h1>
+    <div class="hero-divider"></div>
+    <h3>TASTING FOR VILLA MAS</h3>
+  </div>
+  <div class="scroll-hint"></div>
+</section>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-container">
+
+  <!-- ==================== 1. BAUDOUIN ==================== -->
+  <div class="producer-section" id="baudouin">
+    <h2 class="producer-title">Patrick Baudouin</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Baudouin-6-scaled.jpg" alt="Patrick Baudouin"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Baudouin-7-scaled.jpg" alt="Baudouin vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Baudouin-8-scaled.jpg" alt="Baudouin estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Baudouin-1.jpg" alt="Baudouin terroir"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/05/P-Baudouin-Clos-des-Bruandieres-scaled.jpeg" alt="Clos des Bruandieres"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      Patrick Baudouin&rsquo;s views on wine are as unfiltered as his methods, shaped by decades of organic viticulture and natural winemaking; though he adds sulfites to his wines at bottling. Patrick&rsquo;s vineyards, certified organic but exceeding the certification&rsquo;s expectations, are a reflection of his precise, forceful nature. And while many modern dry Chenin Blancs hum with electricity and tension, Baudouin&rsquo;s wines purr with silky acidity, reminding us that beauty can still speak in whispers. He has 13.5 hectares in Anjou, Coteaux du Layon and Savennieres that rest on ancient volcanic and metamorphic soils, where the conditions are ideal for producing both dry Chenin Blanc and the region&rsquo;s historic botrytised sweet wines.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/patrick-baudouin/" target="_blank" class="producer-link">Click here for more on Patrick Baudouin &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Baudouin, Anjou Blanc Sec &ldquo;La Pierre au Carr&eacute;&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Baudouin, Anjou Blanc Sec &ldquo;Unknown&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2021 Baudouin, Anjou Blanc Sec &ldquo;Le Cornillard&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- ==================== 2. FRANCOIS CROCHET ==================== -->
+  <div class="producer-section" id="crochet">
+    <h2 class="producer-title">Fran&ccedil;ois Crochet</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/05/Francois-Crochet-winemaker.jpg" alt="Fran&ccedil;ois Crochet"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/05/Francois-Crochet-winemaker-working.jpg" alt="Crochet at work"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/05/Francois-Crochet-winemaker-and-father.jpg" alt="Crochet and father"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/05/Francois-Crochet-vineyards.jpg" alt="Crochet vineyards"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2019/04/Francois-Crochet-Grand-Chemarin-scaled.jpg" alt="Grand Chemarin"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      After enology studies and stints at many wineries (highlighted by Domaine Bruno Clair), Fran&ccedil;ois took over his father&rsquo;s Sancerre winery in Bu&eacute;. Approximately 11 hectares on 30 parcels display a range of aspects from flat to steep, and north to south. Most of the grapes are from the lieux-dits Le Petit Chemarin, Le Grand Chemarin, Le Ch&ecirc;ne Marchand and Les Exils. Organic certified and working with biodynamic methods, the terroirs range between Kimmeridgian limestone marls, silex, various other limestone formations, and iron-rich clay. He&rsquo;s one of the first growers in the appellation to pick, and the whites are whole cluster pressed and fermented and aged in steel or old tronconic oak vats. Unfined, lightly filtered, and with added SO2.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/francois-crochet/" target="_blank" class="producer-link">Click here for more on Fran&ccedil;ois Crochet &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Fran&ccedil;ois Crochet, Sancerre Blanc &ldquo;Les Exils&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Fran&ccedil;ois Crochet, Sancerre Blanc &ldquo;Les Amoureuses&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Fran&ccedil;ois Crochet, Sancerre Blanc &ldquo;Le Ch&ecirc;ne Marchand&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- ==================== 3. JEAN COLLET ==================== -->
+  <div class="producer-section" id="collet">
+    <h2 class="producer-title">Jean Collet</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/Collet-Vineyard-shot.jpeg" alt="Collet vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/IMG_0868-scaled.jpeg" alt="Romain Collet"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/domaine-collet-vaillons-home-1024x512-1.jpg" alt="Domaine Collet Vaillons"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/IMG_9548-scaled-1.jpg" alt="Collet Chablis"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/04/Collet10.jpg" alt="Collet estate"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      At twenty-one years old, Romain Collet took over the family domaine and converted many of their vineyards to organic viticulture (with some biodynamic experiments) and incorporated natural yeast fermentations. Collet&rsquo;s range highlights the differences of each of their premier crus and grand crus with a cellar vinification and aging tailored to the uniqueness of each site, leaning toward a richer C&ocirc;te d&rsquo;Or style than the trimmer quality of the Loire Valley whites. The soil is composed of Kimmeridgian limestone marl bedrock with rocky topsoil of Portlandian limestone scree, bedrock-derived marlstones, varying levels of marne (calcium carbonate-rich clay) and loam. No new oak barrels are used with any of the wines imported by The Source.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/jean-collet/" target="_blank" class="producer-link">Click here for more on Jean Collet &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Jean Collet, Chablis 1er Cru Mont&eacute;e de Tonnerre</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2019 Jean Collet, Chablis 1er Cru Mont&eacute;e de Tonnerre</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2017 Jean Collet, Chablis 1er Cru Mont&eacute;e de Tonnerre</p>
+    </div>
+  </div>
+
+  <!-- ==================== 4. HUNTER-McKIRDY ==================== -->
+  <div class="producer-section" id="hunter-mckirdy">
+    <h2 class="producer-title">Hunter-McKirdy</h2>
+
+    <a href="https://thesourceimports.com/producers/hunter-mckirdy/" target="_blank" class="producer-link">Click here for more on Hunter-McKirdy &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Hunter-McKirdy, VDF Blanc Pinot(s) &ldquo;Sous les Coudriers&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Hunter-McKirdy, VDF Blanc Pinot(s) &ldquo;Les Pentes S&egrave;ches&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- ==================== 5. KATHARINA WECHSLER ==================== -->
+  <div class="producer-section" id="wechsler">
+    <h2 class="producer-title">Katharina Wechsler</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Wechsler-1-scaled.jpg" alt="Katharina Wechsler"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Wechsler-3-1-scaled.jpg" alt="Wechsler vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/Wechsler-2.jpg" alt="Wechsler estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2024/10/c7d7516e-ac1e-4bdc-832f-b1aa1312a7d6.jpg" alt="Katharina Wechsler portrait"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/Wechsler-1.jpg" alt="Wechsler winery"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      Katharina Wechsler&rsquo;s enviable and organically certified Rheinhessen holdings are in what may be today&rsquo;s most famous dry Riesling area (mostly thanks to local luminaries Klaus-Peter Keller and Philipp Wittman), with highlights that include a big slab of the grand cru vineyard, Kirchspiel, and perhaps the most coveted of all recognized grand crus, Morstein. Located between these two extraordinary limestone vineyards, the upper section of another important cru, Benn, is also strongly calcareous and planted to Riesling. The highlights in her fully organic range are of course the dry Rieslings raised in steel and imbued with ornate lines and a deep terroir drive. Katharina&rsquo;s dry Rieslings challenge the greats of Germany and Austria&rsquo;s very best growers with their vigor, tension, high energy, potent mineral characteristics, and salty, mouth-watering goodness.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/katharina-wechsler/" target="_blank" class="producer-link">Click here for more on Katharina Wechsler &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Katharina Wechsler, Riesling &ldquo;Kirchspiel&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Katharina Wechsler, Riesling &ldquo;Kirchspiel&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2021 Katharina Wechsler, Riesling &ldquo;Kirchspiel&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- ==================== 6. MANUEL MOLDES ==================== -->
+  <div class="producer-section" id="moldes">
+    <h2 class="producer-title">Manuel Moldes</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/1A2A1966-scaled.jpeg" alt="Manuel Moldes"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/moldes07-2.jpeg" alt="Moldes vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/Moldes5.jpeg" alt="Moldes winery"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/moldes14.jpg" alt="Moldes landscape"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/04/moldes.jpg" alt="Moldes estate"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      One of R&iacute;as Baixas&rsquo; preeminent producers, Manuel Moldes crafts finely tuned, deeply technical wines. His Albari&ntilde;os highlight local schist and granite sites close to the Atlantic in the R&iacute;as Baixas subzone, Val do Saln&eacute;s, to illuminate the differences between these rock types in the final products. The Albari&ntilde;os ferment and age in a combination of steel and old French oak barrels. The red winemaking follows the simplicity in the cellar of Albari&ntilde;os, though they involve the art of blending grape varieties from numerous terroirs. Reds often have some stem inclusion and are fermented and aged in a combination of steel and older oak barrels.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/manuel-moldes/" target="_blank" class="producer-link">Click here for more on Manuel Moldes &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Manuel Moldes, R&iacute;as Baixas Albari&ntilde;o &ldquo;A Capela de Aios&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Manuel Moldes, R&iacute;as Baixas Albari&ntilde;o &ldquo;Peai&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Manuel Moldes, R&iacute;as Baixas Albari&ntilde;o &ldquo;As Dunas&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- ==================== 7. PEDRO MENDEZ (ALBARINO) ==================== -->
+  <div class="producer-section" id="pedro-mendez">
+    <h2 class="producer-title">Pedro M&eacute;ndez</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/IMG_0003-scaled.jpg" alt="Pedro M&eacute;ndez"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/pedro-mendez.jpeg" alt="Pedro M&eacute;ndez vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2024/03/IMG_0002-scaled.jpg" alt="Pedro M&eacute;ndez estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2024/03/IMG_0054-scaled.jpg" alt="Pedro M&eacute;ndez terroir"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2024/03/IMG_0052-scaled.jpg" alt="Pedro M&eacute;ndez landscape"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      Cousin of local viticultural legend, Rodrigo M&eacute;ndez, Pedro M&eacute;ndez wears two hats with full-time work in his family&rsquo;s vineyards and their restaurant during the summer. Located in the Val do Saln&eacute;s subzone of Galicia&rsquo;s R&iacute;as Baixas, he has medium-aged vines and pre-phylloxera Albari&ntilde;o vines that are nearly two hundred years old that look more like trees. These ancient plants fill his full-bodied Albari&ntilde;os with structure and a pure citrusy, salty, minerally, high acidity power that only Albari&ntilde;o possesses. He also makes a compelling range of red wines with Menc&iacute;a and Ca&iacute;&ntilde;o.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/pedro-mendez/" target="_blank" class="producer-link">Click here for more on Pedro M&eacute;ndez &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Pedro M&eacute;ndez, R&iacute;as Baixas Albari&ntilde;o &ldquo;Pedro M&eacute;ndez&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Pedro M&eacute;ndez, R&iacute;as Baixas Albari&ntilde;o &ldquo;As Abeleiras&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Pedro M&eacute;ndez, R&iacute;as Baixas Albari&ntilde;o &ldquo;Tresvellas&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- ==================== 8. PABLO SOLDAVINI ==================== -->
+  <div class="producer-section" id="soldavini">
+    <h2 class="producer-title">Pablo Soldavini</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/Soldavini-scaled.jpeg" alt="Pablo Soldavini"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/Soldavini-3-scaled.jpeg" alt="Soldavini vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/Soldavini-2-scaled.jpeg" alt="Soldavini terroir"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2026/01/Soldavini-1-scaled.jpeg" alt="Soldavini estate"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/09/soldavini4.jpg" alt="Soldavini landscape"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      Argentine national, Pablo Soldavini, returned to his ancestral home in Castro Caldelas inside Galicia&rsquo;s Ribeira Sacra in the early 2010s. He has influenced many fellow winegrowers with his extraordinary, intuitive ability to understand the nature of any particular terroir and maximize its potential. Today, Pablo has dropped his winemaker consulting life to focus on his own projects based in Ribeira Sacra&rsquo;s Ribeiras do Sil subzone with indigenous variety vineyards set at high altitudes in a largely abandoned viticultural area. Everything is done by hand with great care and a gentle approach with natural yeasts, hand harvesting and varying degrees of stem inclusion, gentle extraction (almost infusion), aging in steel or old oak and very little in the way of added sulfites.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/pablo-soldavini/" target="_blank" class="producer-link">Click here for more on Pablo Soldavini &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Pablo Soldavini, Ribeira Sacra &ldquo;Simple&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Pablo Soldavini, Ribeira Sacra &ldquo;Tanis&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2024 Pablo Soldavini, Ribeira Sacra &ldquo;Sabela&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- ==================== 9. PEDRO MENDEZ (RIAS BAIXAS) ==================== -->
+  <div class="producer-section" id="pedro-mendez-reds">
+    <h2 class="producer-title">Pedro M&eacute;ndez</h2>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Pedro M&eacute;ndez, R&iacute;as Baixas &ldquo;Xuntanza&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Pedro M&eacute;ndez, R&iacute;as Baixas &ldquo;Viruxe&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- ==================== 10. AUGALEVADA ==================== -->
+  <div class="producer-section" id="augalevada">
+    <h2 class="producer-title">Augalevada</h2>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/1A2A9840-scaled.jpeg" alt="Augalevada"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/1A2A3135-scaled.jpeg" alt="Augalevada landscape"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/03/1A2A3137-scaled.jpeg" alt="Augalevada vineyard"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/04/Augalevada5.jpg" alt="Augalevada terroir"></div>
+        <div class="carousel-slide"><img src="https://thesourceimports.com/wp-content/uploads/2025/04/augalevada-1.jpg" alt="Augalevada estate"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+      <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <p class="producer-bio">
+      Iago Garrido may be destined to become one of Spain&rsquo;s most influential winegrowers. In 2014 this former professional soccer player buried an amphora filled with Treixadura in the middle of his granite vineyard inside Ribeiro&rsquo;s Avia River Valley. Initially convinced he had made a mistake with the discovery of a flor yeast veil, he later realized this errant shot actually hit a vein of gold that went on to define the direction of his wines. What makes Iago&rsquo;s wines special is not only that he welcomes the influence of flor, or that he is committed to biodynamic practices in his cellar and the vineyards he owns and the ones he works directly himself, and to only using a minuscule dose of sulfur in his wines, it&rsquo;s his razor-sharp attention to detail coupled with his openness to take in the ideas and opinions of others. His creative range is focused on indigenous Galician varieties with many different bottlings.
+    </p>
+
+    <a href="https://thesourceimports.com/producers/fazenda-augalevada/" target="_blank" class="producer-link">Click here for more on Augalevada &rarr;</a>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Augalevada, Monterrei &ldquo;&Aacute;reas de Rei&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Augalevada, Ribeiro &ldquo;Ollos&rdquo;</p>
+    </div>
+
+    <div class="wine-entry">
+      <p class="wine-title">2023 Augalevada, Ribeiro &ldquo;Ollos de Maia&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- ==================== TASTING SUMMARY ==================== -->
+  <div class="summary-section">
+    <h2 class="summary-title">At a Glance</h2>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Wine</th>
+          <th>Producer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2024 Anjou Blanc Sec &ldquo;La Pierre au Carr&eacute;&rdquo;</td>
+          <td>Baudouin</td>
+        </tr>
+        <tr>
+          <td>2024 Anjou Blanc Sec &ldquo;Unknown&rdquo;</td>
+          <td>Baudouin</td>
+        </tr>
+        <tr>
+          <td>2021 Anjou Blanc Sec &ldquo;Le Cornillard&rdquo;</td>
+          <td>Baudouin</td>
+        </tr>
+        <tr>
+          <td>2023 Sancerre Blanc &ldquo;Les Exils&rdquo;</td>
+          <td>Fran&ccedil;ois Crochet</td>
+        </tr>
+        <tr>
+          <td>2023 Sancerre Blanc &ldquo;Les Amoureuses&rdquo;</td>
+          <td>Fran&ccedil;ois Crochet</td>
+        </tr>
+        <tr>
+          <td>2023 Sancerre Blanc &ldquo;Le Ch&ecirc;ne Marchand&rdquo;</td>
+          <td>Fran&ccedil;ois Crochet</td>
+        </tr>
+        <tr>
+          <td>2024 Chablis 1er Cru Mont&eacute;e de Tonnerre</td>
+          <td>Jean Collet</td>
+        </tr>
+        <tr>
+          <td>2019 Chablis 1er Cru Mont&eacute;e de Tonnerre</td>
+          <td>Jean Collet</td>
+        </tr>
+        <tr>
+          <td>2017 Chablis 1er Cru Mont&eacute;e de Tonnerre</td>
+          <td>Jean Collet</td>
+        </tr>
+        <tr>
+          <td>2024 VDF Blanc Pinot(s) &ldquo;Sous les Coudriers&rdquo;</td>
+          <td>Hunter-McKirdy</td>
+        </tr>
+        <tr>
+          <td>2024 VDF Blanc Pinot(s) &ldquo;Les Pentes S&egrave;ches&rdquo;</td>
+          <td>Hunter-McKirdy</td>
+        </tr>
+        <tr>
+          <td>2024 Riesling &ldquo;Kirchspiel&rdquo;</td>
+          <td>Katharina Wechsler</td>
+        </tr>
+        <tr>
+          <td>2023 Riesling &ldquo;Kirchspiel&rdquo;</td>
+          <td>Katharina Wechsler</td>
+        </tr>
+        <tr>
+          <td>2021 Riesling &ldquo;Kirchspiel&rdquo;</td>
+          <td>Katharina Wechsler</td>
+        </tr>
+        <tr>
+          <td>2024 R&iacute;as Baixas Albari&ntilde;o &ldquo;A Capela de Aios&rdquo;</td>
+          <td>Manuel Moldes</td>
+        </tr>
+        <tr>
+          <td>2024 R&iacute;as Baixas Albari&ntilde;o &ldquo;Peai&rdquo;</td>
+          <td>Manuel Moldes</td>
+        </tr>
+        <tr>
+          <td>2024 R&iacute;as Baixas Albari&ntilde;o &ldquo;As Dunas&rdquo;</td>
+          <td>Manuel Moldes</td>
+        </tr>
+        <tr>
+          <td>2024 R&iacute;as Baixas Albari&ntilde;o &ldquo;Pedro M&eacute;ndez&rdquo;</td>
+          <td>Pedro M&eacute;ndez</td>
+        </tr>
+        <tr>
+          <td>2023 R&iacute;as Baixas Albari&ntilde;o &ldquo;As Abeleiras&rdquo;</td>
+          <td>Pedro M&eacute;ndez</td>
+        </tr>
+        <tr>
+          <td>2023 R&iacute;as Baixas Albari&ntilde;o &ldquo;Tresvellas&rdquo;</td>
+          <td>Pedro M&eacute;ndez</td>
+        </tr>
+        <tr>
+          <td>2024 Ribeira Sacra &ldquo;Simple&rdquo;</td>
+          <td>Pablo Soldavini</td>
+        </tr>
+        <tr>
+          <td>2024 Ribeira Sacra &ldquo;Tanis&rdquo;</td>
+          <td>Pablo Soldavini</td>
+        </tr>
+        <tr>
+          <td>2024 Ribeira Sacra &ldquo;Sabela&rdquo;</td>
+          <td>Pablo Soldavini</td>
+        </tr>
+        <tr>
+          <td>2023 R&iacute;as Baixas &ldquo;Xuntanza&rdquo;</td>
+          <td>Pedro M&eacute;ndez</td>
+        </tr>
+        <tr>
+          <td>2023 R&iacute;as Baixas &ldquo;Viruxe&rdquo;</td>
+          <td>Pedro M&eacute;ndez</td>
+        </tr>
+        <tr>
+          <td>2023 Monterrei &ldquo;&Aacute;reas de Rei&rdquo;</td>
+          <td>Augalevada</td>
+        </tr>
+        <tr>
+          <td>2023 Ribeiro &ldquo;Ollos&rdquo;</td>
+          <td>Augalevada</td>
+        </tr>
+        <tr>
+          <td>2023 Ribeiro &ldquo;Ollos de Maia&rdquo;</td>
+          <td>Augalevada</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p class="footer-logo">The Source</p>
+  <p>
+    <a href="https://thesourceimports.com">thesourceimports.com</a>
+  </p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Lightbox for maps
+function openLightbox(src, alt) {
+  var overlay = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxImg').alt = alt;
+  document.getElementById('lightboxCaption').textContent = alt;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Parallax effect on hero background
+(function() {
+  const heroBg = document.querySelector('.hero-bg');
+  const hero = document.querySelector('.hero');
+  const heroContent = document.querySelector('.hero-content');
+
+  window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+
+    if (scrollY <= heroHeight) {
+      heroBg.style.transform = 'translateY(' + (scrollY * 0.4) + 'px)';
+      const opacity = 1 - (scrollY / (heroHeight * 0.6));
+      heroContent.style.opacity = Math.max(0, opacity);
+      heroContent.style.transform = 'translateY(' + (scrollY * 0.2) + 'px)';
+    }
+  }, { passive: true });
+})();
+
+// Scroll-triggered fade-in for producer sections
+(function() {
+  const sections = document.querySelectorAll('.producer-section');
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function(section) {
+    observer.observe(section);
+  });
+})();
+
+// Image carousels
+(function() {
+  document.querySelectorAll('[data-carousel]').forEach(function(carousel) {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+    const prevBtn = carousel.querySelector('.carousel-btn.prev');
+    const nextBtn = carousel.querySelector('.carousel-btn.next');
+    let current = 0;
+
+    slides.forEach(function(_, i) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', function() { goTo(i); });
+      dotsContainer.appendChild(dot);
+    });
+
+    function goTo(index) {
+      current = index;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dotsContainer.querySelectorAll('.carousel-dot').forEach(function(dot, i) {
+        dot.classList.toggle('active', i === current);
+      });
+    }
+
+    prevBtn.addEventListener('click', function() {
+      goTo(current === 0 ? slides.length - 1 : current - 1);
+    });
+    nextBtn.addEventListener('click', function() {
+      goTo(current === slides.length - 1 ? 0 : current + 1);
+    });
+
+    let startX = 0;
+    let isDragging = false;
+
+    carousel.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', function(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextBtn.click();
+        else prevBtn.click();
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
