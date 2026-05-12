@@ -116,6 +116,58 @@
     animation: revealUp 1.2s ease forwards 1.4s;
   }
 
+  /* ===== TITLE IMAGES ===== */
+  .title-img {
+    max-width: 90%;
+    height: auto;
+    opacity: 0;
+  }
+
+  .title-source {
+    height: 30px;
+    width: auto;
+    max-width: 80%;
+    margin-bottom: 20px;
+    animation: revealUp 1.2s ease forwards 0.2s;
+  }
+
+  .title-main {
+    height: 80px;
+    width: auto;
+    max-width: 90%;
+    animation: revealUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+  }
+
+  .title-carmelo {
+    height: 50px;
+    width: auto;
+    max-width: 90%;
+    animation: revealUp 1.2s ease forwards 1.2s;
+  }
+
+  .title-tour {
+    height: 50px;
+    width: auto;
+    max-width: 90%;
+    margin-top: 14px;
+    animation: revealUp 1.2s ease forwards 1.4s;
+  }
+
+  @media (max-width: 768px) {
+    .title-source { height: auto; max-width: 25%; }
+    .title-main { height: auto; max-width: 85%; }
+    .title-carmelo { height: auto; max-width: 75%; }
+    .title-tour { height: auto; max-width: 80%; margin-top: 10px; }
+  }
+
+  @media (max-width: 480px) {
+    .title-source { max-width: 22%; margin-bottom: 14px; }
+    .title-main { max-width: 90%; }
+    .title-carmelo { max-width: 80%; }
+    .title-tour { max-width: 85%; margin-top: 8px; }
+    .hero-text .divider { margin: 18px auto; }
+  }
+
   @keyframes revealUp {
     to { opacity: 1; transform: translateY(0); }
   }
@@ -411,12 +463,12 @@
 <section class="hero">
   <img class="hero-img" src="bien-cover.jpg" alt="Bien de Altura vineyards">
   <div class="hero-overlay"></div>
-  <div class="hero-text" style="display: flex; flex-direction: column; align-items: center;">
-    <img src="title-thesource.png" alt="The Source" style="height: 30px; margin-bottom: 20px; opacity: 0; animation: revealUp 1.2s ease forwards 0.2s;">
-    <img src="title-biendealtura.png" alt="Bien de Altura" style="height: 80px; opacity: 0; animation: revealUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;">
+  <div class="hero-text" style="display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0 20px;">
+    <img src="title-thesource.png" alt="The Source" class="title-img title-source">
+    <img src="title-biendealtura.png" alt="Bien de Altura" class="title-img title-main">
     <div class="divider"></div>
-    <img src="title-carmelo.png" alt="Carmelo Peña Santana" style="height: 50px; opacity: 0; animation: revealUp 1.2s ease forwards 1.2s;">
-    <img src="title-tour.png" alt="2026 US Tour · California · New York" style="height: 50px; margin-top: 14px; opacity: 0; animation: revealUp 1.2s ease forwards 1.4s;">
+    <img src="title-carmelo.png" alt="Carmelo Peña Santana" class="title-img title-carmelo">
+    <img src="title-tour.png" alt="2026 US Tour · California · New York" class="title-img title-tour">
   </div>
   <div class="scroll-line"></div>
 </section>
